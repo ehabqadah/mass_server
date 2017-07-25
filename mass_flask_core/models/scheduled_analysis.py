@@ -1,5 +1,5 @@
 from mass_flask_config.app import db
-from mongoengine import DateTimeField, ReferenceField, IntField
+from mongoengine import DateTimeField, ReferenceField, IntField, DictField
 from .analysis_system_instance import AnalysisSystemInstance
 from .sample import Sample
 from mass_flask_core.utils import TimeFunctions
@@ -10,6 +10,7 @@ class ScheduledAnalysis(db.Document):
     sample = ReferenceField(Sample, required=True)
     analysis_scheduled = DateTimeField(default=TimeFunctions.get_timestamp, required=True)
     priority = IntField(default=0, required=True)
+    parameters = DictField()
 
     meta = {
         'ordering': ['-analysis_scheduled'],

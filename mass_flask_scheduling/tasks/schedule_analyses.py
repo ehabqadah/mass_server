@@ -29,7 +29,7 @@ def _get_instance_with_minimum_count(instance_list):
 
 
 def _schedule_analysis(request, instance):
-    s = ScheduledAnalysis(analysis_system_instance=instance, sample=request.sample)
+    s = ScheduledAnalysis(analysis_system_instance=instance, sample=request.sample, parameters=request.parameters)
     s.save()
     instance.analyses_count += 1
 
