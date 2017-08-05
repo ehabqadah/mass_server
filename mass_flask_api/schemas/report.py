@@ -17,8 +17,7 @@ class ReportSchema(BaseSchema):
         dump_only = [
             'id',
             '_cls',
-            'upload_date',
-            'status'
+            'upload_date'
         ]
 
     @pre_dump
