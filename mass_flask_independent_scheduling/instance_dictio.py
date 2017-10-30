@@ -18,6 +18,7 @@ class InstanceDictio:
                 InstanceDictio.dictio[instance.analysis_system.id] = list()
             if not instance.is_online:
                 continue
+                
             instance.analyses_count = ScheduledAnalysis.objects(analysis_system_instance=instance).count()
             if instance.analyses_count <= current_app.config['MAX_SCHEDULE_THRESHOLD']:
                 InstanceDictio.dictio[instance.analysis_system.id].append(instance)
