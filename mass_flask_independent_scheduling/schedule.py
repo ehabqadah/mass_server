@@ -12,11 +12,9 @@ def _schedule_analysis_request(request):
     min_instance = InstanceDictio.get_instance_with_minimum_count(instances)
     if not InstanceDictio.check_id(system_id):
         return False
-
     s = ScheduledAnalysis(analysis_system_instance=min_instance, sample=request.sample)
     s.save()
     min_instance.analyses_count += 1
-
     InstanceDictio.remove_if_threshold_reached(min_instance, system_id)
     request.delete()
     return True
